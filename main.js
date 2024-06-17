@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = async() => {
     const mindarThree = new MindARThree({
       container: document.body,
-      imageTargetSrc: '../../assets/targets/robot.mind',
+      imageTargetSrc: './assets/targets/robot.mind',
     }); // 1
     const {renderer, scene, camera} = mindarThree;
 
