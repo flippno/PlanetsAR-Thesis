@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    const venus = await loadGLTF('../../assets/models/planets/Venus.glb');
-    venus.scene.scale.set(0.2, 0.2, 0.2);
-    venus.scene.position.set(0, -0.2, 0);
+    // const venus = await loadGLTF('../../assets/models/planets/Venus.glb');
+    // venus.scene.scale.set(0.1, 0.1, 0.1);
+    // venus.scene.position.set(0, -0.4, 0);
 
-    const anchor = mindarThree.addAnchor(0);
-    anchor.group.add(venus.scene);
+    // const anchor = mindarThree.addAnchor(0);
+    // anchor.group.add(venus.scene);
 
     // const mixer = new THREE.AnimationMixer(robot.scene);
 
@@ -106,10 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const prediction = await model.predict(video)
       for (let i = 0; i < maxPredictions; i++) {
         if(prediction[i].className === 'venus' && prediction[i].probability.toFixed(2) >= 0.75){
-          console.log("this is venus")
+          const para = document.createElement("p");
+          para.innerText = "Venus"
         }
         if(prediction[i].className === 'saturn' && prediction[i].probability.toFixed(2) >= 0.75){
-          console.log("this is saturn")
+          const para = document.createElement("p");
+          para.innerText = "Saturn"
         }
       }
       window.requestAnimationFrame(detect);
