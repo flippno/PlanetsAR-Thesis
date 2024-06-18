@@ -6,19 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = async() => {
     const mindarThree = new MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/robot.mind',
+      imageTargetSrc: './assets/targets/ar-planets.mind',
     }); // 1
     const {renderer, scene, camera} = mindarThree;
 
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    // const robot = await loadGLTF('../../assets/models/robot/RobotExpressive.glb');
-    // robot.scene.scale.set(0.2, 0.2, 0.2);
-    // robot.scene.position.set(0, -0.2, 0);
+    const venus = await loadGLTF('../../assets/models/planets/Venus.glb');
+    venus.scene.scale.set(0.2, 0.2, 0.2);
+    venus.scene.position.set(0, -0.2, 0);
 
-    // const anchor = mindarThree.addAnchor(0);
-    // anchor.group.add(robot.scene);
+    const anchor = mindarThree.addAnchor(0);
+    anchor.group.add(venus.scene);
 
     // const mixer = new THREE.AnimationMixer(robot.scene);
 
