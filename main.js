@@ -106,12 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const prediction = await model.predict(video)
       for (let i = 0; i < maxPredictions; i++) {
         if(prediction[i].className === 'venus' && prediction[i].probability.toFixed(2) >= 0.75){
-          const para = document.createElement("p");
-          para.innerText = "Venus"
+          document.getElementById("planet").innerHTML = "Venus";
         }
         if(prediction[i].className === 'saturn' && prediction[i].probability.toFixed(2) >= 0.75){
-          const para = document.createElement("p");
-          para.innerText = "Saturn"
+          document.getElementById("planet").innerHTML = "Saturn";
         }
       }
       window.requestAnimationFrame(detect);
