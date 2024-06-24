@@ -2,6 +2,10 @@ import * as THREE from 'three';
 import { MindARThree } from 'mindar-image-three';
 import { loadGLTF } from './libs/loader.js'
 
+
+let p = document.getElementById("planet");
+p.style.display = "none";
+
 document.addEventListener('DOMContentLoaded', () => {
   const start = async() => {
     const mindarThree = new MindARThree({
@@ -106,11 +110,40 @@ document.addEventListener('DOMContentLoaded', () => {
       const prediction = await model.predict(video)
       for (let i = 0; i < maxPredictions; i++) {
         if(prediction[i].className === 'venus' && prediction[i].probability.toFixed(2) >= 0.75){
-          document.getElementById("planet").innerHTML = "Venus";
+          p.style.display = "block";
+          p.innerHTML = "Venus";
+        } else if(prediction[i].className === 'saturn' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("saturn")
+          p.style.display = "block";
+          p.innerHTML = "Saturn";
+        } else if(prediction[i].className === 'earth' && prediction[i].probability.toFixed(2) >= 0.80){
+          console.log("earth")
+          p.style.display = "block";
+          p.innerHTML = "Earth";
+        } else if(prediction[i].className === 'jupiter' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("jupiter")
+          p.style.display = "block";
+          p.innerHTML = "Jupiter";
+        } else if(prediction[i].className === 'mars' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("mars")
+          p.style.display = "block";
+          p.innerHTML = "Mars";
+        } else if(prediction[i].className === 'mercury' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("mercury")
+          p.style.display = "block";
+          p.innerHTML = "Mercury";
+        } else if(prediction[i].className === 'neptune' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("neptune")
+          p.style.display = "block";
+          p.innerHTML = "Neptune";
+        } else if(prediction[i].className === 'uranus' && prediction[i].probability.toFixed(2) >= 0.75){
+          console.log("uranus")
+          p.style.display = "block";
+          p.innerHTML = "Uranus";
         }
-        if(prediction[i].className === 'saturn' && prediction[i].probability.toFixed(2) >= 0.75){
-          document.getElementById("planet").innerHTML = "Saturn";
-        }
+        
+        
+        
       }
       window.requestAnimationFrame(detect);
     };
